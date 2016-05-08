@@ -1,5 +1,7 @@
 # rails_with_ajax
 
+![alt text](https://upload.wikimedia.org/wikipedia/commons/a/a1/AJAX_logo_by_gengns.svg "AJAX logo")
+
 This is my own note which is a step by step on how to implement built-in rails [AJAX](http://guides.rubyonrails.org/working_with_javascript_in_rails.html) in CRUD. For this app, we will create a simple blog to demonstrate AJAX. Anybody is free to use this note for learning and non-commercial purposes.
 
 ##Step 1
