@@ -1,0 +1,22 @@
+$(document).ready(function() {
+	$("#mymodal").modal('hide');
+	$(".post_title").val('');
+	$(".post_content").val('');
+	$("#container_posts").prepend('<%= j render @post %>');
+	$("#post_<%= @post.id %>").hide().fadeIn(1000);
+
+	$("#new_post").on("ajax:success", function(e, xhr, status, data) {
+
+
+		$("#message").removeClass("hidden").append("You successfully created a post");
+		
+
+	});
+
+
+
+});
+
+
+    
+  

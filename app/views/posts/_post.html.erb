@@ -1,0 +1,82 @@
+<div class="col-md-4 blog-main box text-center " id="post_<%=post.id%>">
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><%= post.title %></h3>
+			<p><%=post.content %></p>
+		</div>
+		<div class="panel-body">
+
+			<div style="color: #3BB2D6;"><%= time_ago_in_words(post.created_at) %></div>
+                        <br>
+    
+            <div class="btn-group" role="group" aria-label="...">
+                 <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#update_<%= post.id %>">
+                                Edit
+                            </button>
+                 <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#destroy_<%= post.id %>">
+                                Delete
+                            </button>
+
+                
+            </div>
+			
+		</div><!-- panel body-->
+	</div><!--panel-info -->
+
+
+
+</div>
+
+<!---Model for edit post-->
+<%= form_for(post, :method => :put, remote: true) do |p| %>
+
+  <div id="update_<%=post.id%>" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Update post</h4>
+      </div>
+       <div class="modal-body">
+       <div class="field">
+            <%= p.label :title %><br>
+            <%= p.text_field :title, class: "form-control post_title" %>
+        </div>
+        <div class="field">
+            <%= p.label :content %><br>
+            <%= p.text_area :content, class: "form-control post_content" %>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <%= submit_tag "Save", class: "btn btn-primary" %>
+      </div>
+      
+    </div>
+  </div>
+</div>
+  
+<% end %>
+
+<!--modal for delete-->
+
+<%= form_for(post, :method => :delete, remote: true) do |p| %>
+
+  <div id="destroy_<%=post.id%>" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Delete post</h4>
+      </div>
+       <div class="modal-body">
+       		<p>Are you sure you want to delete this post?</p>
+      </div>
+      <div class="modal-footer">
+        <%= submit_tag "Delete", class: "btn btn-primary" %>
+      </div>
+      
+    </div>
+  </div>
+</div>
+  
+<% end %>

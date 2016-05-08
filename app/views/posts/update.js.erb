@@ -1,0 +1,23 @@
+$(document).ready(function() {
+	$("#update_<%=@post.id%>").modal('hide');
+	
+	
+	$("#post_<%= @post.id %>").fadeOut(500, function(){
+
+		$(this).remove();
+		$("#container_posts").prepend('<%= j render @post %>');
+		
+	});
+
+	$(".edit_post").on("ajax:success", function(e, xhr, status, data) {
+
+
+		$("#message").removeClass("hidden").append("You successfuly update the post");
+		
+
+	});
+
+
+
+});
+

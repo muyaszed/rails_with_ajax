@@ -1,0 +1,22 @@
+$(document).ready(function() {
+	
+	$("#destroy_<%=@post.id%>").modal('hide');
+	
+	$("#post_<%= @post.id %>").fadeOut(500, function(){
+
+		$(this).remove();
+		
+		
+	});
+
+	$(".edit_post").on("ajax:success", function(e, xhr, status, data) {
+
+
+		$("#message").removeClass("hidden").append("You successfuly delete the post");
+		
+
+	});
+
+
+
+});
